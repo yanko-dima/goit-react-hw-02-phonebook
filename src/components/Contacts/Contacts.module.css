@@ -1,0 +1,8 @@
+.contacts__list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.contacts__item {
+  padding: 2px;
+}
