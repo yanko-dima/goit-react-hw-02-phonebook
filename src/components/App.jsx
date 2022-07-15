@@ -5,20 +5,24 @@ import Contacts from 'components/Contacts';
 
 export class App extends Component {
   state = {
-    contacts: [],
+    contacts: [
+      { id: 'id-1', name: 'Yanko Dmytro' },
+      { id: 'id-2', name: 'Baraban Vladimir' },
+      { id: 'id-3', name: 'Talko Vladislav' },
+    ],
     name: '',
   };
 
   render() {
-    // const { contacts, name } = this.state;
+    const { contacts, name } = this.state;
 
     return (
       <>
         <Section title={'Phonebook'}>
-          <Phonebook />
+          <Phonebook name={name} />
         </Section>
         <Section title={'Contacts'}>
-          <Contacts />
+          <Contacts contacts={contacts} />
         </Section>
       </>
     );

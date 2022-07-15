@@ -3,17 +3,14 @@ import css from 'components/Contacts/Contacts.module.css';
 
 const id = nanoid();
 
-const Contacts = () => {
-  return (
-    <ul className={css.contacts__list}>
-      <li key={id} className={css.contacts__item}>
-        123
+const Contacts = ({ contacts }) => (
+  <ul className={css.contacts__list}>
+    {contacts.map(({ id, name }) => (
+      <li className={css.contacts__item} key={id}>
+        <p>{name}</p>
       </li>
-      <li key={id} className={css.contacts__item}>
-        321
-      </li>
-    </ul>
-  );
-};
+    ))}
+  </ul>
+);
 
 export default Contacts;
