@@ -1,13 +1,12 @@
-import { nanoid } from 'nanoid';
 import css from 'components/Contacts/Contacts.module.css';
-
-const id = nanoid();
 
 const Contacts = ({ contacts }) => (
   <ul className={css.contacts__list}>
-    {contacts.map(({ id, name }) => (
+    {contacts.map(({ id, name, number }) => (
       <li className={css.contacts__item} key={id}>
-        <p>{name}</p>
+        <p>
+          {name}: {number}
+        </p>
       </li>
     ))}
   </ul>

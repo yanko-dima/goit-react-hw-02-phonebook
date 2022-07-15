@@ -4,8 +4,11 @@ p {
 
 .contacts__list {
   list-style: none;
+  background-color: #fff;
   margin: 0;
-  padding: 0;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 3px 3px hsl(0deg 0% 68% / 60%);
 }
 
 .contacts__item {
