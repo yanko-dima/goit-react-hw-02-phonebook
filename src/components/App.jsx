@@ -16,14 +16,13 @@ export class App extends Component {
 
   formSubmitHandler = ({ name, number }) => {
     const id = nanoid(5);
-    const client = {
+    const contact = {
       id,
       name,
       number,
     };
-    console.log('client: ', client);
     this.setState(prevState => ({
-      clients: [client, ...prevState.clients],
+      contacts: [contact, ...prevState.contacts],
     }));
   };
 
