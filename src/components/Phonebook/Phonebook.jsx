@@ -27,8 +27,6 @@ class Phonebook extends Component {
     });
   };
 
-  // { name, number, handleChange, submit }
-
   render() {
     const { name, number } = this.state;
 

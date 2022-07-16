@@ -2,6 +2,7 @@ import { Component } from 'react';
 import { nanoid } from 'nanoid';
 import Section from 'components/Section';
 import Phonebook from 'components/Phonebook';
+import Filter from './Filter/Filter';
 import Contacts from 'components/Contacts';
 
 export class App extends Component {
@@ -12,6 +13,7 @@ export class App extends Component {
       { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
+    filter: '',
   };
 
   formSubmitHandler = ({ name, number }) => {
@@ -26,8 +28,16 @@ export class App extends Component {
     }));
   };
 
+  changeFilter = e => {
+    this.setState({ filter: e.currentTarget.value });
+  };
+
   render() {
-    const { contacts } = this.state;
+    const { contacts, filter } = this.state;
+    const normalizedFilter = filter.toLowerCase();
+    const visibleContacts = contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter)
+    );
 
     return (
       <>
@@ -35,7 +45,8 @@ export class App extends Component {
           <Phonebook onSubmit={this.formSubmitHandler} />
         </Section>
         <Section title={'Contacts'}>
-          <Contacts contacts={contacts} />
+          <Filter value={filter} changeFilter={this.changeFilter} />
+          <Contacts contacts={visibleContacts} />
         </Section>
       </>
     );
