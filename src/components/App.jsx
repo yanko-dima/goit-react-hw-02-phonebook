@@ -23,9 +23,14 @@ export class App extends Component {
       name,
       number,
     };
-    this.setState(prevState => ({
-      contacts: [contact, ...prevState.contacts],
-    }));
+
+    this.setState(prevState =>
+      prevState.contacts.find(contact => contact.name === name)
+        ? alert(`${name} is already in contacts`)
+        : {
+            contacts: [contact, ...prevState.contacts],
+          }
+    );
   };
 
   changeFilter = e => {
