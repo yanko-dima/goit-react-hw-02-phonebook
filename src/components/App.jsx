@@ -32,12 +32,24 @@ export class App extends Component {
     this.setState({ filter: e.currentTarget.value });
   };
 
-  render() {
+  getVisibleContacts = () => {
     const { contacts, filter } = this.state;
     const normalizedFilter = filter.toLowerCase();
-    const visibleContacts = contacts.filter(contact =>
+
+    return contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizedFilter)
     );
+  };
+
+  deleteContact = contactId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }));
+  };
+
+  render() {
+    const { filter } = this.state;
+    const visibleContacts = this.getVisibleContacts();
 
     return (
       <>
@@ -46,7 +58,10 @@ export class App extends Component {
         </Section>
         <Section title={'Contacts'}>
           <Filter value={filter} changeFilter={this.changeFilter} />
-          <Contacts contacts={visibleContacts} />
+          <Contacts
+            contacts={visibleContacts}
+            onDeleteContact={this.deleteContact}
+          />
         </Section>
       </>
     );

@@ -12,12 +12,14 @@ p {
 }
 
 .contacts__item {
+  display: flex;
+  justify-content: space-between;
   color: #475a6a;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   line-height: 1.4;
   background-color: #f3f6f9;
-  padding: 5px 15px 5px 15px;
+  padding: 8px 15px 8px 15px;
   border-radius: 3px;
 }
 
@@ -27,5 +29,23 @@ p {
 }
 
 .contacts__item:not(:last-child) {
-  margin-bottom: 12px;
+  margin-bottom: 8px;
+}
+
+.contacts__btn {
+  color: #475a6a;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.4;
+
+  border-radius: 3px;
+  border: none;
+  box-shadow: 0 1px 2px 2px hsl(0deg 0% 68% / 60%);
+  padding: 3px 10px 3px 10px;
+}
+
+.contacts__btn:hover,
+.contacts__btn:focus {
+  background-color: #21b8c5;
+  color: #fff;
 }
