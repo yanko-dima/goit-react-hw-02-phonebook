@@ -17,6 +17,7 @@ export class App extends Component {
   };
 
   formSubmitHandler = ({ name, number }) => {
+    const { contacts } = this.state;
     const id = nanoid(5);
     const contact = {
       id,
@@ -24,13 +25,24 @@ export class App extends Component {
       number,
     };
 
-    this.setState(prevState =>
-      prevState.contacts.find(contact => contact.name === name)
-        ? alert(`${name} is already in contacts`)
-        : {
-            contacts: [contact, ...prevState.contacts],
-          }
+    const checkedContact = contacts.find(
+      contact => contact.name.toLowerCase() === name.toLowerCase()
     );
+
+    // if (checkedContact) {
+    //   alert(`${name} is already in contacts`);
+    //   return;
+    // }
+
+    // this.setState(prevState => ({
+    //   contacts: [contact, ...prevState.contacts],
+    // }));
+
+    checkedContact
+      ? alert(`${name} is already in contacts`)
+      : this.setState(prevState => ({
+          contacts: [contact, ...prevState.contacts],
+        }));
   };
 
   changeFilter = e => {
